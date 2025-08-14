@@ -1,0 +1,14 @@
+name: security-gate
+description: Security audit and documentation of findings
+steps:
+  - agent: security-auditor
+    in:
+      targets: "{{changed_files}}"
+    out:
+      security_file: "Docs/security/{{task_id}}-security.md"
+  - agent: documentation-specialist
+    in:
+      targets: "{{changed_files}}"
+      review_findings: "{{prev.security_file}}"
+    out:
+      docs_file: "Docs/docs/{{task_id}}-security-notes.md"

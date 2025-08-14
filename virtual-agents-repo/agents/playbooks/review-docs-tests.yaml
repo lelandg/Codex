@@ -1,0 +1,20 @@
+name: review-docs-tests
+description: Review → Docs → Tests for recent changes
+steps:
+  - agent: code-reviewer
+    in:
+      changed_files: "{{changed_files}}"
+      diff_summary: "{{diff_summary}}"
+    out:
+      review_file: "Docs/reviews/{{task_id}}-review.md"
+  - agent: documentation-specialist
+    in:
+      targets: "{{changed_files}}"
+      review_findings: "{{prev.review_file}}"
+    out:
+      docs_file: "Docs/docs/{{task_id}}-docs.md"
+  - agent: test-generator
+    in:
+      changed_files: "{{changed_files}}"
+    out:
+      tests_file: "Docs/tests/{{task_id}}-tests.md"

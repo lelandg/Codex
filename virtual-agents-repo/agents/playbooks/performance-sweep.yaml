@@ -1,0 +1,13 @@
+name: performance-sweep
+description: Performance analysis with follow-up perf test plan
+steps:
+  - agent: performance-optimizer
+    in:
+      targets: "{{changed_files}}"
+    out:
+      perf_file: "Docs/performance/{{task_id}}-perf.md"
+  - agent: test-generator
+    in:
+      changed_files: "{{changed_files}}"
+    out:
+      tests_file: "Docs/tests/{{task_id}}-perf-tests.md"

@@ -1,0 +1,49 @@
+- id: code-reviewer
+  purpose: Comprehensive code review for bugs, quality, and performance
+  tools: [Read, Grep, Glob]
+  inputs:
+    changed_files: [string]
+    diff_summary: string
+  outputs:
+    - file: Docs/reviews/{{task_id}}-review.md
+      format: markdown
+  triggers: ["review this code", "code review", "PR"]
+  notes: Follow project standards in CLAUDE.md
+
+- id: documentation-specialist
+  purpose: Create/update developer and user docs
+  tools: [Read, Write]
+  inputs:
+    targets: [string]
+    review_findings: string
+  outputs:
+    - file: Docs/docs/{{task_id}}-docs.md
+      format: markdown
+
+- id: test-generator
+  purpose: Generate tests and coverage plan
+  tools: [Read, Write]
+  inputs:
+    changed_files: [string]
+    public_interfaces: [string]
+  outputs:
+    - file: Docs/tests/{{task_id}}-tests.md
+      format: markdown
+
+- id: security-auditor
+  purpose: Identify vulnerabilities and compliance issues (OWASP).
+  tools: [Read, Grep]
+  inputs:
+    targets: [string]
+  outputs:
+    - file: Docs/security/{{task_id}}-security.md
+      format: markdown
+
+- id: performance-optimizer
+  purpose: Analyze performance, detect bottlenecks, propose optimizations.
+  tools: [Read, Grep]
+  inputs:
+    targets: [string]
+  outputs:
+    - file: Docs/performance/{{task_id}}-perf.md
+      format: markdown
