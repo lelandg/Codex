@@ -134,6 +134,7 @@ When you ask to use agents, I route work through a playbook and keep you updated
 - What it does:
   - Ensures target Docs output directories exist (reviews, docs, tests, security, performance).
   - Copies the starter agents registry and playbooks into the destination.
+  - Copies the user manual into `<dest>/Docs/agents/Virtual-Agents-User-Manual.md` when available.
   - Copies itself into the destination for reuse.
 - Notes:
   - In this repository, the starter agents live under `virtual-agents/agents/`. In consuming repos, the standard layout is `./agents/`.

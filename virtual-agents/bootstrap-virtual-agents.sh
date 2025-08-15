@@ -62,6 +62,21 @@ for f in Docs/reviews/.gitkeep Docs/docs/.gitkeep Docs/tests/.gitkeep Docs/secur
   echo "Ensured: $f"
 done
 
+# Docs manual (if present)
+mkdir -p "$DEST/Docs/agents"
+MANUAL_SRC_ROOT="$ROOT_DIR/Docs/agents/Virtual-Agents-User-Manual.md"
+MANUAL_SRC_TPL="$TPL_DIR/Docs/agents/Virtual-Agents-User-Manual.md"
+if [[ -f "$MANUAL_SRC_ROOT" ]]; then
+  cp -f "$MANUAL_SRC_ROOT" "$DEST/Docs/agents/Virtual-Agents-User-Manual.md"
+  echo "Copied: Docs/agents/Virtual-Agents-User-Manual.md"
+elif [[ -f "$MANUAL_SRC_TPL" ]]; then
+  mkdir -p "$DEST/Docs/agents"
+  cp -f "$MANUAL_SRC_TPL" "$DEST/Docs/agents/Virtual-Agents-User-Manual.md"
+  echo "Copied: Docs/agents/Virtual-Agents-User-Manual.md (from template)"
+else
+  echo "Note: User manual not found in source; skipped."
+fi
+
 # Logs structure
 mkdir -p "$DEST/logs/agents"
 : > "$DEST/logs/agents/.gitkeep"
