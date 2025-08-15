@@ -39,7 +39,7 @@ Notes:
 ## Key Documents
 - `README.md`: Repo purpose, structure, guidelines, and how to use Codex here.
 - `AGENTS.md`: Session rules and triggers; how to route work via playbooks; references the user manual.
-- `AGENTS.local.md`: Local working notes copied from another project (C#-heavy); keep as personal context only.
+- `AGENTS.local.md`: Local, docs-first working notes for this repo (no language/IDE specifics).
 - `Docs/agents/Virtual-Agents-User-Manual.md`: Quick help for triggers and available playbooks.
 - `virtual-agents/README.md`: How to copy the starter agents into an existing repo and run playbooks.
 - `virtual-agents/agents/registry.yaml`: Agent IDs and outputs for the starter set.
@@ -53,6 +53,21 @@ Notes:
   - Option A: Copy `virtual-agents/agents/` to repo root as `agents/`.
   - Option B: Update your tooling to point at `virtual-agents/agents/`.
   - Option C: Keep ad-hoc runs (like this codemap) without installing playbooks.
+
+## Publishing Intent
+- Purpose: This repository publishes a reusable starter set of Codex virtual agents for others to adopt.
+- Implication: The agents are stored under `virtual-agents/agents/` in this repo to keep the root clean and emphasize “publisher” role.
+
+## Agent Path Resolution
+- In this repository: treat `virtual-agents/agents/` as the agents root (registry + playbooks).
+- In other repositories that consume these agents: assume the standard root `./agents/` layout unless otherwise specified.
+
+## Adoption Guidance
+- To adopt in another project:
+  - Copy `virtual-agents/agents/` to the target repo root as `./agents/`.
+  - Copy or create `Docs/` subfolders for outputs (`reviews`, `docs`, `tests`, `security`, `performance`).
+  - Optionally copy `Docs/agents/Virtual-Agents-User-Manual.md` for local quick help.
+  - Update any tooling to look for `./agents/registry.yaml` and `./agents/playbooks/`.
 
 ## Agent Outputs (Conventions)
 When running playbooks, write artifacts to `Docs/`:
@@ -73,12 +88,11 @@ When running playbooks, write artifacts to `Docs/`:
 - `AGENTS.local.md` contains MeshForge/C#-specific content; treat it as personal notes and not authoritative for this repo.
 
 ## Suggested Next Steps
-- Decide whether to adopt the starter agents:
+- Decide whether to adopt the starter agents here or keep the publisher layout:
   - Copy `virtual-agents/agents/` → `agents/` to enable playbooks.
   - Add the CodeMap playbooks if desired (`code-map-update`, `code-map-update-inplace`).
-- Keep artifacts organized under `Docs/` and add `Docs/codemap/` to track future codemap updates.
-- If you want in-place updates: create `Docs/CodeMap.md` and back it up before each change.
+- Keep artifacts organized under `Docs/` and use `Docs/codemap/` for drafts; backups live under `Docs/codemap/backups/`.
+- This file (`Docs/CodeMap.md`) is the authoritative codemap; back it up on major edits.
 
 ---
 Generated ad hoc by Codex CLI (no playbook execution).
-
