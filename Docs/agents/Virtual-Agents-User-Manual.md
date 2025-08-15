@@ -128,11 +128,16 @@ When you ask to use agents, I route work through a playbook and keep you updated
 - Playbooks maintain step outputs and pass them to subsequent steps automatically.
 
 ## Bootstrapping and Setup
-- Script: `Scripts/bootstrap-virtual-agents.sh`
-  - Ensures target docs directory exists.
-  - Copies this manual to the specified destination (defaults to `Docs/agents`).
-  - Optional flags documented in the script header.
-- One-time check: Verify `agents/registry.yaml` and `agents/playbooks/` exist (they are committed in this repo).
+- Bootstrap script paths:
+  - In this repo: `virtual-agents/bootstrap-virtual-agents.sh <dest> [--force]`
+  - After bootstrapping into a repo: `./bootstrap-virtual-agents.sh <dest> [--force]`
+- What it does:
+  - Ensures target Docs output directories exist (reviews, docs, tests, security, performance).
+  - Copies the starter agents registry and playbooks into the destination.
+  - Copies itself into the destination for reuse.
+- Notes:
+  - In this repository, the starter agents live under `virtual-agents/agents/`. In consuming repos, the standard layout is `./agents/`.
+  - Optional flags and details are documented in the script header.
 
 ## Examples
 - “use virtual agents” → I’ll list playbooks and ask for inputs.

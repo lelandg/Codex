@@ -2,8 +2,16 @@
 set -euo pipefail
 
 DEST=""
-SRC_DIR=$(cd "$(dirname "$0")/.." && pwd)
-TPL_DIR="$SRC_DIR/templates/virtual-agents"
+# Resolve directories
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+ROOT_DIR=$(cd "$SCRIPT_DIR/.." && pwd)
+
+# Template source resolution: prefer top-level templates dir if present; otherwise use this script's directory
+if [[ -d "$ROOT_DIR/templates/virtual-agents" ]]; then
+  TPL_DIR="$ROOT_DIR/templates/virtual-agents"
+else
+  TPL_DIR="$SCRIPT_DIR"
+fi
 
 usage() {
   echo "Usage: $0 DEST_DIR [--force]" >&2

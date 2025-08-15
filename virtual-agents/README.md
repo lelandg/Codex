@@ -31,8 +31,10 @@ You can use this by just copying the files — no script required.
    - `git add agents Docs Notes logs && git commit -m "add virtual agents + playbooks"`
 4) Pilot a playbook manually (see below), then iterate on `agents/registry.yaml`.
 
-Optional: If you have a bootstrap script available (from source repo), run:
-- `./scripts/bootstrap-virtual-agents.sh /path/to/existing-repo`
+Optional: Use the bootstrap script to copy the starter into another repo:
+- From this repo: `virtual-agents/bootstrap-virtual-agents.sh /path/to/existing-repo [--force]`
+- After bootstrapping (inside the target repo): `./bootstrap-virtual-agents.sh /another/target [--force]`
+  - The script copies itself into the destination for reuse.
 
 ## Running Manually (LLM Orchestration)
 - Choose a playbook (e.g., `review-docs-tests`).
