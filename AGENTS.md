@@ -70,6 +70,6 @@ If an agents root (per above) contains `registry.yaml` and `playbooks/`, adopt t
 
 ### Help and Manual
 - On hearing any of: "use virtual agents", "use agents", "use agent", or a direct agent/playbook name, first enable agents and display the quick help summary from `Docs/agents/Virtual-Agents-User-Manual.md` (top section), then proceed to collect inputs and run the chosen playbook.
-- User manual: `Docs/agents/Virtual-Agents-User-Manual.md`
-    - For this repo, the bootstrap script lives at `virtual-agents/bootstrap-virtual-agents.sh` (not `Scripts/`). Use it if you want to copy the manual or the starter set elsewhere.
+- User manual: `Docs/agents/Virtual-Agents-User-Manual.md` (in this repo); in bootstrapped repos the manual is placed at `Docs/Virtual-Agents-User-Manual.md`.
+    - For this repo, the bootstrap script lives at `virtual-agents/bootstrap-virtual-agents.sh`. In bootstrapped repos, it is placed at `Scripts/bootstrap-virtual-agents.sh`.
     - The manual lists all playbooks, their inputs/outputs, and trigger phrases.

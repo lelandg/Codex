@@ -62,17 +62,16 @@ for f in Docs/reviews/.gitkeep Docs/docs/.gitkeep Docs/tests/.gitkeep Docs/secur
   echo "Ensured: $f"
 done
 
-# Docs manual (if present)
-mkdir -p "$DEST/Docs/agents"
+# Docs manual (if present) → <dest>/Docs/Virtual-Agents-User-Manual.md
+mkdir -p "$DEST/Docs"
 MANUAL_SRC_ROOT="$ROOT_DIR/Docs/agents/Virtual-Agents-User-Manual.md"
 MANUAL_SRC_TPL="$TPL_DIR/Docs/agents/Virtual-Agents-User-Manual.md"
 if [[ -f "$MANUAL_SRC_ROOT" ]]; then
-  cp -f "$MANUAL_SRC_ROOT" "$DEST/Docs/agents/Virtual-Agents-User-Manual.md"
-  echo "Copied: Docs/agents/Virtual-Agents-User-Manual.md"
+  cp -f "$MANUAL_SRC_ROOT" "$DEST/Docs/Virtual-Agents-User-Manual.md"
+  echo "Copied: Docs/Virtual-Agents-User-Manual.md"
 elif [[ -f "$MANUAL_SRC_TPL" ]]; then
-  mkdir -p "$DEST/Docs/agents"
-  cp -f "$MANUAL_SRC_TPL" "$DEST/Docs/agents/Virtual-Agents-User-Manual.md"
-  echo "Copied: Docs/agents/Virtual-Agents-User-Manual.md (from template)"
+  cp -f "$MANUAL_SRC_TPL" "$DEST/Docs/Virtual-Agents-User-Manual.md"
+  echo "Copied: Docs/Virtual-Agents-User-Manual.md (from template)"
 else
   echo "Note: User manual not found in source; skipped."
 fi
@@ -87,11 +86,12 @@ copy_file Notes/Virtual-Agents-Implementation-Plan.md
 copy_file AGENTS.md
 copy_file Notes/Codex-Virtual-Agents-Prompt.md
 
-# Copy this bootstrap script into the target directory
+# Copy this bootstrap script into the target Scripts/ directory
 SELF_NAME="$(basename "$0")"
-cp -f "$0" "$DEST/$SELF_NAME"
-chmod +x "$DEST/$SELF_NAME" || true
-echo "Copied: $SELF_NAME (into $DEST)"
+mkdir -p "$DEST/Scripts"
+cp -f "$0" "$DEST/Scripts/$SELF_NAME"
+chmod +x "$DEST/Scripts/$SELF_NAME" || true
+echo "Copied: Scripts/$SELF_NAME (into $DEST)"
 
 echo "\nBootstrap complete. Review files under: $DEST"
 echo "\nCopy/paste this to initialize Codex in a new session:"

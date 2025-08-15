@@ -33,9 +33,9 @@ You can use this by just copying the files — no script required.
 
 Optional: Use the bootstrap script to copy the starter into another repo:
 - From this repo: `virtual-agents/bootstrap-virtual-agents.sh /path/to/existing-repo [--force]`
-- After bootstrapping (inside the target repo): `./bootstrap-virtual-agents.sh /another/target [--force]`
+- After bootstrapping (inside the target repo): `./Scripts/bootstrap-virtual-agents.sh /another/target [--force]`
   - The script copies itself into the destination for reuse.
-  - It also copies the user manual to `<dest>/Docs/agents/Virtual-Agents-User-Manual.md` when available.
+  - It also copies the user manual to `<dest>/Docs/Virtual-Agents-User-Manual.md` when available.
 
 ## Running Manually (LLM Orchestration)
 - Choose a playbook (e.g., `review-docs-tests`).

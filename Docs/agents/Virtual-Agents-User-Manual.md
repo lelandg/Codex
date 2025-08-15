@@ -130,11 +130,11 @@ When you ask to use agents, I route work through a playbook and keep you updated
 ## Bootstrapping and Setup
 - Bootstrap script paths:
   - In this repo: `virtual-agents/bootstrap-virtual-agents.sh <dest> [--force]`
-  - After bootstrapping into a repo: `./bootstrap-virtual-agents.sh <dest> [--force]`
+  - After bootstrapping into a repo: `./Scripts/bootstrap-virtual-agents.sh <dest> [--force]`
 - What it does:
   - Ensures target Docs output directories exist (reviews, docs, tests, security, performance).
   - Copies the starter agents registry and playbooks into the destination.
-  - Copies the user manual into `<dest>/Docs/agents/Virtual-Agents-User-Manual.md` when available.
+  - Copies the user manual into `<dest>/Docs/Virtual-Agents-User-Manual.md` when available.
   - Copies itself into the destination for reuse.
 - Notes:
   - In this repository, the starter agents live under `virtual-agents/agents/`. In consuming repos, the standard layout is `./agents/`.
